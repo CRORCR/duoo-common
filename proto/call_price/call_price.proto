@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package call_price;
+option go_package = "github.com/CRORCR/duoo-common/proto/call_price";
+import "proto/base/base.proto";
+
+message GetPriceReq {
+  string  uid = 1;
+}
+
+message GetPriceResp {
+  message Data{
+    string   uid = 1;
+    string   date = 2;
+    float    price = 3;
+  }
+  repeated Data data = 1;
+  base.Pagination pagination = 2;
+}
+
+service HisDemoList {
+  rpc GetDemo (GetPriceReq) returns (GetPriceResp) {
+  }
+}
